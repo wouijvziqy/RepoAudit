@@ -159,6 +159,10 @@ class Python_TSAnalyzer(TSAnalyzer):
             parameter_name = ""
             for sub_node in parameter_node.children:
                 for sub_sub_node in find_nodes_by_type(sub_node, "identifier"):
+                    if sub_sub_node.parent and sub_sub_node.parent.type == "type":
+                        # Disregard type annotations
+                        continue
+
                     parameter_name = file_content[
                         sub_sub_node.start_byte : sub_sub_node.end_byte
                     ]
