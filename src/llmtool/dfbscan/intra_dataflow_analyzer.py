@@ -138,7 +138,7 @@ class IntraDataFlowAnalyzer(LLMTool):
             r"Line:\s*([^;]+);"
         )
 
-        current_path : dict[str, Any] | None = None
+        current_path: dict[str, Any] | None = None
         for line in response.splitlines():
             line = line.strip().lstrip("-").strip()
             if not line:
