@@ -1,7 +1,7 @@
 from os import path
 import json
 import time
-from typing import List, Set, Optional, Dict
+from typing import List, Set, Optional, Dict, Any
 from llmtool.LLM_utils import *
 from llmtool.LLM_tool import *
 from memory.syntactic.function import *
@@ -138,7 +138,7 @@ class IntraDataFlowAnalyzer(LLMTool):
             r"Line:\s*([^;]+);"
         )
 
-        current_path = None
+        current_path : dict[str, Any] | None = None
         for line in response.splitlines():
             line = line.strip().lstrip("-").strip()
             if not line:
